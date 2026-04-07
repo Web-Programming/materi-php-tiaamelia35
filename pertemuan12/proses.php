@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if ($email === ''){
         $postErrors[] = 'Email Wajib Diisi.';
-    } elseif (|filter_var($email, FILTER_VALIDATE_EMAIL)){
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $postErrors[] = 'Format Email Tidak Valid.';
     }
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             <strong>Validasi Gagal</strong>
             <ul>
                 <?php foreach ($postErrors as $error): ?>
-                    <li><? = htmlspecialchars ($error, ENT_QUOTES, 'UTF-8') ?></li>
+                    <li><?= htmlspecialchars ($error, 2, 'UTF-8') ?></li>
                     <?php endforeach; ?>
             </ul>
         </div>
@@ -55,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class = "success">Data Berhasil dikirim dengan method POST.</div>
         <div class = "result">
             <strong>Hasil POST:</strong><br>
-            Nama: <?= htmlspecialchars($nama, ENT_QUOTES, 'UTF-8') ?><br>
-            Email: <?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?><br>
-            Pesan: <?= htmlspecialchars($pesan, ENT_QUOTES, 'UTF-8') ?><br>
+            Nama: <?= htmlspecialchars($nama, 2, 'UTF-8') ?><br>
+            Email: <?= htmlspecialchars($email, 2, 'UTF-8') ?><br>
+            Pesan: <?= htmlspecialchars($pesan, 2, 'UTF-8') ?><br>
         </div>
     <?php endif; ?>
     <a href="index2.php">Kembali ke Form</a>
