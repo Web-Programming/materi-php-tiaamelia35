@@ -11,7 +11,7 @@
 <form action="proses_keuangan.php" method="POST">
     
     <label>Tanggal Transaksi:</label><br>
-    <input type="date" name="tanggal" required><br><br>
+    <input type="date" name="tanggal"><br><br>
 
     <label>Jenis Transaksi:</label><br>
     <select name="jenis" required>
@@ -19,11 +19,17 @@
         <option value="Pengeluaran">Pengeluaran</option>
     </select><br><br>
 
-    <label>Nominal:</label><br>
-    <input type="number" name="nominal" required><br><br>
 
-    <label>Keterangan:</label><br>
-    <input type="text" name="keterangan" required><br><br>
+    <label for="keyword">Nominal</label>
+        <input id="nominal" name="nominal" type="number" 
+        value="<?php echo htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8'); ?>"
+        placeholder="Masukkan Nominal Uang Anda">
+
+
+    <label for="keyword">Keterangan</label>
+        <input id="keterangan" name="keterangan" type="text" 
+        value="<?php echo htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8'); ?>"
+        placeholder="Masukkan Keterangan Anda">
 
     <button type="submit" name="simpan">Simpan Data</button>
 
