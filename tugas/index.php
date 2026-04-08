@@ -23,13 +23,13 @@
     <label for="keyword">Nominal</label>
         <input id="nominal" name="nominal" type="number" 
         value="<?php echo htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8'); ?>"
-        placeholder="Masukkan Nominal Uang Anda">
+        placeholder="Masukkan Nominal Uang Anda"><br><br>
 
 
     <label for="keyword">Keterangan</label>
         <input id="keterangan" name="keterangan" type="text" 
         value="<?php echo htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8'); ?>"
-        placeholder="Masukkan Keterangan Anda">
+        placeholder="Masukkan Keterangan Anda"><br><br>
 
     <button type="submit" name="simpan">Simpan Data</button>
 
