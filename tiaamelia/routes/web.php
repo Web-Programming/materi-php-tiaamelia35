@@ -97,5 +97,28 @@ Route::get('/detailproduk', function(){
 
 
 
+Route::get('/produk/create', function(){
+    return view('produk.create');
+});
 
+Route::get('produk/search', function(){
+    return view ('produk.search');
+});
+
+Route::get('produk/detail',function(){
+    return view('produk.detail');
+});
+
+
+
+use App\Http\Controllers\ProdukController;
+//Php artisan make:controller ProdukController --resource
+Route::resource('/produk', ProdukController::class);
+Route::get('/produk/search', ProdukController::class.'@search');
+
+
+//Supplier
+Route::get('/supplier/', function(){
+    return view('supplier.index');
+});
 
