@@ -1,7 +1,9 @@
-@ -0,0 +1,74 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 //Route ke halaman utama (home)
 Route::get('/', function () {
@@ -74,51 +76,98 @@ Route::get('/test-method', function(){
     return view('test_method');
 });
 
-
-
-//Menampilkan halaman profil
+//Router untuk menampilkan halaman profil
 Route::get('/profil', function(){
-    return view ("profile");
+    return view('profile');
 });
 
-
-
-//contoh lain
-//gunakan . untuk memisahkan folder dgn view
+//Gunakan . untuk memisahkan folder dengan view
 Route::get('/detailproduk', function(){
-    return view ("produk.detail", 
-        ['product_name' => $name,
-        'id' => 101,
-        'color' => "Silver",
-        'Stock' => 12
-        ]
-    );          //parameter pertama nama view, dan ke-2 data
-});
-
-
-
-Route::get('/produk/create', function(){
-    return view('produk.create');
-});
-
-Route::get('produk/search', function(){
-    return view ('produk.search');
-});
-
-Route::get('produk/detail',function(){
     return view('produk.detail');
 });
 
+// //mengirim data ke view
+// Route::get('/detailproduk/{name}', function($name){
+//     return view('produk.detail', 
+//         ['product_name' => $name, 
+//         'id' => 101,
+//         'color' => 'Silver',
+//         'stock' => 12
+//         ]
+//     );
+// });
+
+// Route::get('/produk/', function(){
+//     return view('produk.index');
+// });
+
+// Route::get('/produk/create', function(){
+//     return view('produk.create');
+// });
+
+// Route::get('/produk/search', function(){
+//     return view('produk.search');
+// });
+
+// Route::get('/produk/detail', function(){
+//     return view('produk.detail');
+// });
+
+use App\Http\Controllers\ProductController;
+//php artisan make:controller ProductController -resource
+Route::resource('/produk', ProductController::class);
+Route::get('/produk/search', ProductController::class.'@search');
+Route::get('/produk/detail', ProductController::class.'@detail');
+
+// Route::get('/supplier/', function(){
+//     return view('supplier.index');
+// });
+
+use App\Http\Controllers\SupplierController;
+//php artisan make:controller SupplierController -resource
+Route::resource('/supplier', SupplierController::class);
+Route::get('/supplier/search', SupplierController::class.'@search');
+Route::get('/supplier/detail', SupplierController::class.'@detail');
 
 
-use App\Http\Controllers\ProdukController;
-//Php artisan make:controller ProdukController --resource
-Route::resource('/produk', ProdukController::class);
-Route::get('/produk/search', ProdukController::class.'@search');
 
 
-//Supplier
-Route::get('/supplier/', function(){
-    return view('supplier.index');
+
+// ==================== HOME ====================
+Route::get('/', function () {
+return view('home');
+})->name('home');
+// ==================== ROUTE AUTHENTIKASI ====================
+// Tampilkan form register
+Route::get('/register', [AuthController::class, 'registerForm'])
+->name('register')
+->middleware('guest'); // hanya bisa diakses jika BELUM login
+// Proses simpan register
+Route::post('/register', [AuthController::class, 'register'])
+->middleware('guest');
+// Tampilkan form login
+Route::get('/login', [AuthController::class, 'loginForm'])
+->name('login') // nama route ini WAJIB 'login' agar middleware auth berfungsi
+->middleware('guest');
+// Proses login
+Route::post('/login', [AuthController::class, 'login'])
+->middleware('guest');
+// Proses logout (gunakan POST untuk keamanan, bukan GET)
+Route::post('/logout', [AuthController::class, 'logout'])
+->name('logout')
+->middleware('auth'); // hanya bisa diakses jika SUDAH login
+
+// ==================== ROUTE YANG DILINDUNGI ====================
+// Semua route di dalam group ini hanya bisa diakses jika sudah login
+Route::middleware('auth')->group(function () {
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/barang', [BarangController::class, 'index']);
+Route::get('/barang/create', [BarangController::class, 'create']);
+Route::get('/barang/{id}', [BarangController::class, 'show']);
+Route::get('/barang/edit/{id}', [BarangController::class, 'edit']);
+Route::post('/barang', [BarangController::class, 'store']);
+Route::put('/barang/update/{id}', [BarangController::class, 'update']);
+Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
+//Daftarkan Route Lainnya di Sini :
+// - Route Supplier
 });
-
