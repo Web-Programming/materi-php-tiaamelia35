@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@@yield('title')</title>
+    <title>@yield('title')</title>
 </head>
 <body>
     @section('navbar')
-    <b>Ini Navbar Utama</b>
-    @show
+    <b>Ini Navbar Utama</b><br />
+        @show
+        
+        @yield('banner')
+        @show
 
 
-    @section('banner')
-    @show
-
-
-    @yield('content')
+        @yield('content')
 </body>
 </html>
