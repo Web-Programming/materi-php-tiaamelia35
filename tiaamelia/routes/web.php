@@ -1,173 +1,173 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
+// use Illuminate\Support\Facades\Route;
 
-//Route ke halaman utama (home)
-Route::get('/', function () {
-    echo "hallo nama saya seven";
-    //return view('welcome');
-});
 
-//Route ke halaman alamat
-Route::get('/alamat', function () {
-    echo "Jalan Rajawali 14. Palembang";
-});
-
-//Route ke halaman alamat
-Route::get('/path1/path2/detail', function () {
-    echo "Jalan Rajawali 14. Palembang";
-    echo "<br>";
-    echo "Rt. 01 Rw. 02";
-    echo "<br>";
-    echo "Kecamatan Alang-Alang Lebar";
-    echo "<br>";
-    echo "Kota Palembang";
-    echo "<br>";
-    echo "Provinsi Sumatera Selatan";
-});
-
-//Route Dinamis dengan parameter id
-Route::get('/user/{id}', function($id){
-    echo "User ID: " . $id;
-});
-
-//Route Dinamis dengan parameter nama
-Route::get('/user2/{name}', function($name){
-    echo "User Name: " . $name;
-});
-
-//Route Dinamis dengan opsional parameter nama
-Route::get('/user3/{name?}', function($name = 'Tamu'){
-    echo "User Name: " . $name;
-});
-
-//Route Dinamis degnan parameter nama dan id
-Route::get('/user4/{id}/{name}', function($id, $name){
-    echo "User ID: " . $id;
-    echo "<br>";
-    echo "User Name: " . $name;
-});
-
-//Router dengan metode POST
-Route::get('/simpan', function(){
-    echo "Data berhasil disimpan";
-});
-
-//Router dengan metode PUT
-Route::put('/update/{id}', function($id){
-    echo "Data berhasil diperbarui dengan ID: " . $id;
-});
-
-//Router dengan metode PATCH
-Route::patch('/update2/{id}', function($id){
-    echo "Data berhasil diperbarui dengan ID: " . $id;
-});
-
-//Router dengan metode PUT
-Route::delete('/hapus/{id}', function($id){
-    echo "Data berhasil dihapus dengan ID: " . $id;
-});
-
-//Router untuk menampilkan halaman test_method
-Route::get('/test-method', function(){
-    return view('test_method');
-});
-
-//Router untuk menampilkan halaman profil
-Route::get('/profil', function(){
-    return view('profile');
-});
-
-//Gunakan . untuk memisahkan folder dengan view
-Route::get('/detailproduk', function(){
-    return view('produk.detail');
-});
-
-// //mengirim data ke view
-// Route::get('/detailproduk/{name}', function($name){
-//     return view('produk.detail', 
-//         ['product_name' => $name, 
-//         'id' => 101,
-//         'color' => 'Silver',
-//         'stock' => 12
-//         ]
-//     );
+// //Route ke halaman utama (home)
+// Route::get('/', function () {
+//     echo "hallo nama saya seven";
+//     //return view('welcome');
 // });
 
-// Route::get('/produk/', function(){
-//     return view('produk.index');
+// //Route ke halaman alamat
+// Route::get('/alamat', function () {
+//     echo "Jalan Rajawali 14. Palembang";
 // });
 
-// Route::get('/produk/create', function(){
-//     return view('produk.create');
+// //Route ke halaman alamat
+// Route::get('/path1/path2/detail', function () {
+//     echo "Jalan Rajawali 14. Palembang";
+//     echo "<br>";
+//     echo "Rt. 01 Rw. 02";
+//     echo "<br>";
+//     echo "Kecamatan Alang-Alang Lebar";
+//     echo "<br>";
+//     echo "Kota Palembang";
+//     echo "<br>";
+//     echo "Provinsi Sumatera Selatan";
 // });
 
-// Route::get('/produk/search', function(){
-//     return view('produk.search');
+// //Route Dinamis dengan parameter id
+// Route::get('/user/{id}', function($id){
+//     echo "User ID: " . $id;
 // });
 
-// Route::get('/produk/detail', function(){
+// //Route Dinamis dengan parameter nama
+// Route::get('/user2/{name}', function($name){
+//     echo "User Name: " . $name;
+// });
+
+// //Route Dinamis dengan opsional parameter nama
+// Route::get('/user3/{name?}', function($name = 'Tamu'){
+//     echo "User Name: " . $name;
+// });
+
+// //Route Dinamis degnan parameter nama dan id
+// Route::get('/user4/{id}/{name}', function($id, $name){
+//     echo "User ID: " . $id;
+//     echo "<br>";
+//     echo "User Name: " . $name;
+// });
+
+// //Router dengan metode POST
+// Route::get('/simpan', function(){
+//     echo "Data berhasil disimpan";
+// });
+
+// //Router dengan metode PUT
+// Route::put('/update/{id}', function($id){
+//     echo "Data berhasil diperbarui dengan ID: " . $id;
+// });
+
+// //Router dengan metode PATCH
+// Route::patch('/update2/{id}', function($id){
+//     echo "Data berhasil diperbarui dengan ID: " . $id;
+// });
+
+// //Router dengan metode PUT
+// Route::delete('/hapus/{id}', function($id){
+//     echo "Data berhasil dihapus dengan ID: " . $id;
+// });
+
+// //Router untuk menampilkan halaman test_method
+// Route::get('/test-method', function(){
+//     return view('test_method');
+// });
+
+// //Router untuk menampilkan halaman profil
+// Route::get('/profil', function(){
+//     return view('profile');
+// });
+
+// //Gunakan . untuk memisahkan folder dengan view
+// Route::get('/detailproduk', function(){
 //     return view('produk.detail');
 // });
 
+// // //mengirim data ke view
+// // Route::get('/detailproduk/{name}', function($name){
+// //     return view('produk.detail', 
+// //         ['product_name' => $name, 
+// //         'id' => 101,
+// //         'color' => 'Silver',
+// //         'stock' => 12
+// //         ]
+// //     );
+// // });
+
+// // Route::get('/produk/', function(){
+// //     return view('produk.index');
+// // });
+
+// // Route::get('/produk/create', function(){
+// //     return view('produk.create');
+// // });
+
+// // Route::get('/produk/search', function(){
+// //     return view('produk.search');
+// // });
+
+// // Route::get('/produk/detail', function(){
+// //     return view('produk.detail');
+// // });
+
+
+// //php artisan make:controller ProductController -resource
+// Route::resource('/produk', ProductController::class);
+// Route::get('/produk/search', ProductController::class.'@search');
+// Route::get('/produk/detail', ProductController::class.'@detail');
+
+// // Route::get('/supplier/', function(){
+// //     return view('supplier.index');
+// // });
+
+
+// //php artisan make:controller SupplierController -resource
+// Route::resource('/supplier', SupplierController::class);
+// Route::get('/supplier/search', SupplierController::class.'@search');
+// Route::get('/supplier/detail', SupplierController::class.'@detail');
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
-//php artisan make:controller ProductController -resource
-Route::resource('/produk', ProductController::class);
-Route::get('/produk/search', ProductController::class.'@search');
-Route::get('/produk/detail', ProductController::class.'@detail');
-
-// Route::get('/supplier/', function(){
-//     return view('supplier.index');
-// });
-
-use App\Http\Controllers\SupplierController;
-//php artisan make:controller SupplierController -resource
-Route::resource('/supplier', SupplierController::class);
-Route::get('/supplier/search', SupplierController::class.'@search');
-Route::get('/supplier/detail', SupplierController::class.'@detail');
-
-
-
-
 
 // ==================== HOME ====================
 Route::get('/', function () {
-return view('home');
+    return view('home');
 })->name('home');
+
 // ==================== ROUTE AUTHENTIKASI ====================
 // Tampilkan form register
 Route::get('/register', [AuthController::class, 'registerForm'])
-->name('register')
-->middleware('guest'); // hanya bisa diakses jika BELUM login
+    ->name('register')
+    ->middleware('guest'); // hanya bisa diakses jika BELUM login
 // Proses simpan register
 Route::post('/register', [AuthController::class, 'register'])
-->middleware('guest');
+    ->middleware('guest');
 // Tampilkan form login
 Route::get('/login', [AuthController::class, 'loginForm'])
-->name('login') // nama route ini WAJIB 'login' agar middleware auth berfungsi
-->middleware('guest');
+    ->name('login') // nama route ini WAJIB 'login' agar middleware auth berfungsi
+    ->middleware('guest');
 // Proses login
 Route::post('/login', [AuthController::class, 'login'])
-->middleware('guest');
+    ->middleware('guest');
 // Proses logout (gunakan POST untuk keamanan, bukan GET)
 Route::post('/logout', [AuthController::class, 'logout'])
-->name('logout')
-->middleware('auth'); // hanya bisa diakses jika SUDAH login
+    ->name('logout')
+    ->middleware('auth'); // hanya bisa diakses jika SUDAH login
 
 // ==================== ROUTE YANG DILINDUNGI ====================
 // Semua route di dalam group ini hanya bisa diakses jika sudah login
 Route::middleware('auth')->group(function () {
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/barang/create', [BarangController::class, 'create']);
-Route::get('/barang/{id}', [BarangController::class, 'show']);
-Route::get('/barang/edit/{id}', [BarangController::class, 'edit']);
-Route::post('/barang', [BarangController::class, 'store']);
-Route::put('/barang/update/{id}', [BarangController::class, 'update']);
-Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
-//Daftarkan Route Lainnya di Sini :
-// - Route Supplier
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/produk', [ProductController::class, 'index']);
+    Route::get('/produk/create', [ProductController::class, 'create']);
+    Route::get('/produk/{id}', [ProductController::class, 'show']);
+    Route::get('/produk/edit/{id}', [ProductController::class, 'edit']);
+    Route::post('/produk', [ProductController::class, 'store']);
+    Route::put('/produk/update/{id}', [ProductController::class, 'update']);
+    Route::delete('/barang/{id}', [ProductController::class, 'destroy']);
+    //Daftarkan Route Lainnya di Sini :
+    // - Route Supplier
 });
