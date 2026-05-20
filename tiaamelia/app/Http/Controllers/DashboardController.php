@@ -6,7 +6,8 @@ use App\Models\Product;
 
 class DashboardController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $totalBarang = Product::count();
         $barangTersedia = Product::where('is_active', 1)->count();
         $barangHabis = Product::where('is_active', 0)->count();

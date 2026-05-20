@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product; //Tambahkan Manual
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -13,7 +13,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $title = 'Daftar Produk';
+
+        //Cara pakai Privacy Policy
+        Gate::authorize('viewAny', Product::class);
+        $title = "Daftar Produk";
 
         // $products = [
         //     ['id' => 1, 'name' => 'Laptop', 'price' => 15000000],
@@ -38,6 +41,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create-product');
         $title = 'Tambah Produk';
         return view('produk.create', compact('title'));
     }
@@ -47,6 +51,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('create', Product::class);
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'price' => 'required|numeric|min:0',
@@ -76,6 +81,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
+        Gate::authorize('update-product');
         $title = "Edit Produk";
         $product = Product::findOrFail($id);
         return view('produk.edit', compact('product', 'title'));
@@ -87,6 +93,8 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::findOrFail($id);
+        Gate::authorize('update', $product);
+        
         $validated = $request->validate([
             'name' => 'required|string|max:100',
             'price' => 'required|numeric|min:0',
@@ -106,6 +114,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
+        Gate::authorize('delete.product');
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('produk.index')
