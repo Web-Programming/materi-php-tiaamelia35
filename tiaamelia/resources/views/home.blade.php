@@ -48,9 +48,9 @@
                 </div>
             </div>
         </div>
-
         <div class="row mt-5 g-4">
             <div class="col-md-4">
+
                 <div class="card h-100 border-0 shadow-sm text-center p-4">
                     <i class="bi bi-box-seam display-5 text-primary mb-3"></i>
                     <h5>Manajemen Barang</h5>

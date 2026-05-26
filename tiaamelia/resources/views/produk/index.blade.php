@@ -24,20 +24,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
-
     @can('create-product')
         <div class="mb-3">
             <a href="{{ route('produk.create') }}" class="btn btn-primary">Tambah Produk</a>
         </div>
     @endcan
-
     @cannot('create-product')
-        <span class="badge bg-secondary">User tidak diizinkan menambah produk</span>   
+        <span class="badge bg-secondary">User tidak diizinkan menambah produk</span>
     @endcannot
-
-    <div class="mb-3">
-        <a href="{{ route('produk.create') }}" class="btn btn-primary">Tambah Produk</a>
-    </div>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
@@ -111,7 +105,8 @@
                                         </div>
                                         <div class="modal-body">
                                             <p class="mb-0">Apakah Anda yakin ingin menghapus produk
-                                                <strong>{{ $item->name }}</strong>?</p>
+                                                <strong>{{ $item->name }}</strong>?
+                                            </p>
                                             <p class="text-muted small mb-0">Tindakan ini tidak dapat dibatalkan.</p>
                                         </div>
                                         <div class="modal-footer">

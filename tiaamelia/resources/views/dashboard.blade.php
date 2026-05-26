@@ -78,7 +78,7 @@
     <div class="card shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">5 Barang Terbaru</h5>
-            <a href="{{ url('/produk/create') }}" class="btn btn-primary btn-sm">
+            <a href="{{ url('/barang/create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Tambah Barang
             </a>
         </div>
@@ -87,7 +87,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>Nama Barang</th>
-                        <th>deskripsi</th>
+                        <th>Deskripsi</th>
                         <th>Harga</th>
                         <th>Status</th>
                     </tr>

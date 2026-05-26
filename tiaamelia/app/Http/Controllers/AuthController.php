@@ -11,11 +11,13 @@ class AuthController extends Controller
 {
     // ==================== REGISTER ====================
     // Tampilkan form register
-    public function registerForm(){
+    public function registerForm()
+    {
         return view('auth.register', ['title' => 'Daftar Akun']);
     }
     // Proses simpan user baru
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:100',
@@ -31,14 +33,16 @@ class AuthController extends Controller
         // Redirect ke halaman login dengan pesan sukses
         return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login.');
     }
-
     // ==================== LOGIN ====================
     // Tampilkan form login
-    public function loginForm(){
+    public function loginForm()
+    {
         return view('auth.login', ['title' => 'Login']);
     }
+
     // Proses autentikasi pengguna
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         // Validasi input
         $request->validate([
             'email' => 'required|email',
@@ -57,13 +61,14 @@ class AuthController extends Controller
         }
         // Jika gagal, kembali ke form login dengan pesan error
         return back()
-        ->withInput($request->only('email'))
-        ->withErrors(['email' => 'Email atau password salah.']);
+            ->withInput($request->only('email'))
+            ->withErrors(['email' => 'Email atau password salah.']);
     }
-
+    
     // ==================== LOGOUT ====================
     // Proses logout
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout(); // hapus sesi login
         // Invalidasi & regenerasi token session
         $request->session()->invalidate();

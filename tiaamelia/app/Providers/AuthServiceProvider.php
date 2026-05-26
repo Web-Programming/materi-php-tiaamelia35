@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -20,25 +21,21 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
-    //untuk mengelola product hanya dilakukan oleh Admin
-        Gate::define('manage-products', function ($user) { return $user->role === 'admin';
+        //Untuk megelola product hanya dilakukan oleh admin
+        Gate::define('manage-products', function ($user) {
+            return $user->role === 'admin';
         });
-
-
-        //untuk update product dpt dilakukan Admin dan Sales
-        Gate::define('update-products', function (User $user) { return $user->role === 'admin' || $user->role === 'sales';
+        //Untuk update product dapat dilakukan oleh admin dan sales
+        Gate::define('update-product', function (User $user) {
+            return $user->role === 'admin' || $user->role === 'sales';
         });
-
-
-        //untuk delete product dpt dilakukan Admin
-        Gate::define('delete-products', function (User $user) { return $user->role === 'admin';
+        //Untuk menghapus product hanya dilakukan oleh admin
+        Gate::define('delete-product', function (User $user) {
+            return $user->role === 'admin';
         });
-
-
-        //untuk create product dpt dilakukan Admin oleh user yang sudah login
-        Gate::define('create-products', function (User $user) { return $user !== null;
+        //Untuk membuat product dapat dilakukan oleh user yang sudah login
+        Gate::define('create-product', function (User $user) {
+            return $user->role === 'sales';
         });
-        
     }
 }
